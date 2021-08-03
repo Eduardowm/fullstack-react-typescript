@@ -1,0 +1,11 @@
+import express from "express";
+import "reflect-metadata";
+import { useGraphQL } from "./apollo";
+
+const app = express();
+const port = process.env.PORT || 3333;
+
+const init = async () => useGraphQL(app).then((app) =>
+  app.listen(port, () => console.log(`Server running on http://localhost:${port}/graphql`)));
+
+init();
